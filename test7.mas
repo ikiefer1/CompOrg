@@ -1,0 +1,9 @@
+   Load X
+   JumpI X
+   Add Y
+   Subt Z
+   Output
+   Halt
+X, DEC 4
+Y, DEC 6
+Z, DEC 1

@@ -1,0 +1,10 @@
+   Load X
+   JnS Y
+   Add Z
+   Output
+   Halt
+Y, DEC 2
+   Add Y
+   JumpI Y
+Z, DEC 3
+X, DEC 1

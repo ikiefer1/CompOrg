@@ -1,0 +1,8 @@
+   Load X
+   StoreI Y
+   Add Z
+   Output 
+   Halt
+X, DEC 1
+Y, Z
+Z, DEC 3

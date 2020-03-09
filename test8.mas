@@ -1,0 +1,12 @@
+   Load X
+   SkipEq0
+   Add Y
+   Subt Z
+   SkipLt0
+   Add R
+   Output
+   Halt
+X, DEC 0
+Y, DEC 5
+Z, DEC 1
+R, DEC 4

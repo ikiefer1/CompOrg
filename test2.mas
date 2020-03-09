@@ -1,0 +1,5 @@
+    LoadI X
+    DEC 3
+    Output
+    Halt
+X,  DEC 1

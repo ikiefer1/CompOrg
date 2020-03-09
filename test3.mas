@@ -1,0 +1,7 @@
+   Load X
+   AddI Y
+   DEC 3
+   Output
+   Halt
+X, DEC 2
+Y, DEC 2

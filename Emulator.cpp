@@ -3,10 +3,10 @@
 #include <string>
 #include <vector>
 using namespace std;
-/*
+
 int main(int argc, char* argv[])
 {
-	int i;
+	/*int i;
 	char* in, * out;
 	in = NULL;
 	out = NULL;
@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 				i++;
 			}
 			else {
-				cerr<< "Error: --in missing file name\n";
+				cerr << "Error: --in missing file name\n";
 				exit(1);
 			}
 		}
@@ -33,12 +33,12 @@ int main(int argc, char* argv[])
 				i++;
 			}
 			else {
-				cerr<< "Error: --out missing file name\n";
+				cerr << "Error: --out missing file name\n";
 				exit(1);
 			}
 		}
 		else {
-			cerr<< "Error: invalid paramter >%s<\n", argv[i];
+			cerr << "Error: invalid paramter >%s<\n", argv[i];
 			exit(1);
 		}
 	}
@@ -49,17 +49,16 @@ int main(int argc, char* argv[])
 	}
 	if (out == NULL)
 	{
-		cerr<< "Error: missing --out <fn> parameter\n";
+		cerr << "Error: missing --out <fn> parameter\n";
 		exit(1);
 	}
 	*/
-int main()
-{
 	string inFile;
 	int numFile;
 	int num;
 	ifstream file;
-	file.open("test.txt");
+	string test;
+	file.open("test4.hex");
 	vector<int> mem;
 	while (!file.eof())
 	{
@@ -103,6 +102,7 @@ int main()
 			ac = ac - mbr;
 			break;
 		case 0x5000://Input
+			cout << "Input value" << endl;
 			cin >> input;
 			ac = input;
 			break;
@@ -111,14 +111,9 @@ int main()
 			cout<< output;
 			break;
 		case 0x8000://skipcond
-			if ((hand & 0xF00) == 0)//or is it mem[pc] & 0x0F00
-			{
-				if (ac < 0)
-				{
-					pc = pc + 1;
-				}
-			}
-			else if ((hand & 0xF00) == 0x400)
+				
+			
+			 if ((hand & 0xF00) == 0x400)
 			{
 				if (ac == 0)
 				{
@@ -132,25 +127,24 @@ int main()
 					pc = pc + 1;
 				}
 			}
+			else {
+				 if (ac < 0)
+				 {
+					 pc = pc + 1;
+				 }
+			 }
 			break;
 		case 0x9000://Jump
 			pc = hand;
 			break;
 		case 0x0000://JnS
 			mbr = pc;
-			cout << "mbr/pc "<<mbr << endl;
 			mar = hand;
-			cout << "mar " << mar << endl;
 			mem[mar] = mbr;
-			cout << "mem[mar] " << mem[mar] << endl;
 			mbr = hand;
-			cout << "mbr " << mbr << endl;
 			ac = 1;
-			cout << "ac initial " << ac << endl;
 			ac = ac + mbr;
-			cout << "ac " << ac << endl;
 			pc = ac;
-			cout << "pc final " << pc << endl;
 			break;
 		case 0xa000://Clear
 			ac = 0;
@@ -183,5 +177,6 @@ int main()
 			break;
 		}
 	}
+	return 0;
 	
 }

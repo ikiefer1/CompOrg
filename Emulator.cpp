@@ -75,10 +75,14 @@ int main(int argc, char* argv[])
 	int pc = 0;
 	int input = 0;
 	int output = 0;
+	ofstream outFile;
+	outFile.open(out);
+	outFile << "Instruction	" << "PC" << endl;
 	while ((mem[pc] & 0xF000) != 0x7000)
 	{
 		int instr=(mem[pc] & 0xF000);
 		int hand = (mem[pc] & 0x0FFF);
+		outFile << hex << instr << "		" << pc << endl;
 		pc++;
 		switch (instr)
 		{
@@ -177,10 +181,10 @@ int main(int argc, char* argv[])
 			mem[mar] = mbr;
 			break;
 		}
+		
 	}
-	ofstream outFile;
-	outFile.open(out);
-	outFile << output;
+	outFile << 28672 << "		" << pc << endl;
+    outFile << endl<<"Output is\n"<<output;
 	outFile.close();
     return 0;
 	

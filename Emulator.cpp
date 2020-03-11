@@ -63,6 +63,7 @@ int main(int argc, char* argv[])
 	vector<int> mem;
 	while (!file.eof())
 	{
+		
 		file >> inFile;
 		numFile = stoi(inFile, nullptr, 16);
 		//cout<< hex << numFile<<endl;
@@ -184,7 +185,7 @@ int main(int argc, char* argv[])
 		
 	}
 	outFile << 28672 << "		" << pc << endl;
-    outFile << endl<<"Output is\n"<<output;
+    outFile << endl<<"Output is\n"<<dec<<output;
 	outFile.close();
     return 0;
 	

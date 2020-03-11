@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 		{
 			if ((i + 1) < argc)
 			{
-				in = argv[i];
+				in = argv[i+1];
 				i++;
 			}
 			else {
@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
 		{
 			if ((i + 1) < argc)
 			{
-				out = argv[i];
+				out = argv[i+1];
 				i++;
 			}
 			else {
@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
 	int num;
 	ifstream file;
 	string test;
-	file.open("test4.hex");
+	file.open(in);
 	vector<int> mem;
 	while (!file.eof())
 	{
@@ -178,6 +178,10 @@ int main(int argc, char* argv[])
 			break;
 		}
 	}
-	return 0;
+	ofstream outFile;
+	outFile.open(out);
+	outFile << output;
+	outFile.close();
+    return 0;
 	
 }

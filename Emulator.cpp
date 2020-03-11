@@ -6,7 +6,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	/*int i;
+	int i;
 	char* in, * out;
 	in = NULL;
 	out = NULL;
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 		cerr << "Error: missing --out <fn> parameter\n";
 		exit(1);
 	}
-	*/
+	
 	string inFile;
 	int numFile;
 	int num;

@@ -1,3 +1,6 @@
+//Emulator.cpp for HW4
+//Isaiah Kiefer
+
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -115,10 +118,9 @@ int main(int argc, char* argv[])
 		case 0x6000://Output
 			output = ac;
 			cout<< output;
+			outFile << "Output: " << dec << output<<endl;
 			break;
 		case 0x8000://skipcond
-				
-			
 			 if ((hand & 0xF00) == 0x400)
 			{
 				if (ac == 0)
@@ -184,8 +186,8 @@ int main(int argc, char* argv[])
 		}
 		
 	}
-	outFile << 28672 << "		" << pc << endl;
-    outFile << endl<<"Output is\n"<<dec<<output;
+	outFile << hex << 28672 << "		" << pc << endl;
+    
 	outFile.close();
     return 0;
 	

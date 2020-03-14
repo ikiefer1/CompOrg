@@ -10,11 +10,12 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+	
 	int i;
 	char* in, * out;
 	in = NULL;
 	out = NULL;
-
+	
 	for (i = 1; i < argc; i++)
 	{
 		if (strcmp(argv[i], "--in") == 0)
@@ -66,11 +67,15 @@ int main(int argc, char* argv[])
 	vector<int> mem;
 	while (!file.eof())
 	{
-		
 		file >> inFile;
-		numFile = stoi(inFile, nullptr, 16);
-		//cout<< hex << numFile<<endl;
-		mem.push_back(numFile);
+		if (inFile.empty() || inFile[0] == '#')
+		{
+
+		}
+		else {
+			numFile = stoi(inFile, nullptr, 16);
+			mem.push_back(numFile);
+		}
 	}
 	
 	int mbr = 0;
@@ -82,7 +87,7 @@ int main(int argc, char* argv[])
 	ofstream outFile;
 	outFile.open(out);
 	outFile << "Instruction	" << "PC" << endl;
-	while ((mem[pc] & 0xF000) != 0x7000)
+	while (pc<5000 && ((mem[pc] & 0xF000) != 0x7000))
 	{
 		int instr=(mem[pc] & 0xF000);
 		int hand = (mem[pc] & 0x0FFF);
@@ -120,6 +125,7 @@ int main(int argc, char* argv[])
 			cout<< output;
 			outFile << "Output: " << dec << output<<endl;
 			break;
+	
 		case 0x8000://skipcond
 			 if ((hand & 0xF00) == 0x400)
 			{
@@ -186,7 +192,13 @@ int main(int argc, char* argv[])
 		}
 		
 	}
-	outFile << hex << 28672 << "		" << pc << endl;
+	if (pc > 5000)
+	{
+		cout << "ERROR: Too many instructions!";
+	}
+	else {
+		outFile << hex << 28672 << "		" << pc << endl;
+	}
     
 	outFile.close();
     return 0;
